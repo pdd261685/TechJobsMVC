@@ -31,14 +31,14 @@ namespace TechJobs.Controllers
         {
             if (column.Equals("all"))
             {
-                List<Dictionary<string, string>> jobs = JobData.FindAll();
+                IList<Dictionary<string, string>> jobs = JobData.FindAll();//Implementation of the IList interface
                 ViewBag.title =  "All Jobs";
                 ViewBag.jobs = jobs;
                 return View("Jobs");
             }
             else
             {
-                List<string> items = JobData.FindAll(column);
+                IEnumerable<string> items = JobData.FindAll(column);
                 ViewBag.title =  "All " + columnChoices[column] + " Values";
                 ViewBag.column = column;
                 ViewBag.items = items;
