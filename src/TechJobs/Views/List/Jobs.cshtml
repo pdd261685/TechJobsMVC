@@ -3,28 +3,24 @@
 <h3>@ViewBag.jobs.Count Result(s)</h3>
 
 
- @foreach(Dictionary<string,string> jobs in ViewBag.jobs)
-  {
-<table calss="job-listing">
+@foreach (Dictionary<string, string> jobs in ViewBag.jobs)
+{
 
+<table calss="job-listing">
     @foreach (KeyValuePair<string, string> row in jobs)
     {
+        
+            <tr>
+                <td scope="col"> @row.Key</td>
+                <td scope="col"> @row.Value</td>
+            </tr>
+        
+     }
+</table>
+        <br /><br /><br />
 
+        }
 
-        <tr>
-            <th scope="col"> @row.Key</th>
-            <th scope="col"> @row.Value</th>
-        </tr>
-
-
-
-
-    }
-
-    <br />
-    </table>
-    }
-    
-@{
-    // TODO #3 - Use the same list display from Views/Search/Index.cshtml
-}
+        @{
+            // TODO #3 - Use the same list display from Views/Search/Index.cshtml
+        }

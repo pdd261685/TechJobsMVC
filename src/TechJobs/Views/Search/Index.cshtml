@@ -6,6 +6,7 @@
     <p>
         @foreach (KeyValuePair<string, string> column in ViewBag.columns)
         {
+            
             <span>
                 <input type="radio"
                        name="searchType"
@@ -33,17 +34,19 @@
     <h3>@ViewBag.jobs.Count Result(s)</h3>
     @foreach(Dictionary<string,string> jobs in ViewBag.jobs)
     {
-        @foreach(KeyValuePair<string,string> row in jobs)
-        {
-            <table calss="job-listing">
-                <thead>
+        <table calss="job-listing">
+            @foreach (KeyValuePair<string, string> row in jobs)
+            {
+
+               
                     <tr>
                         <th scope="col"> @row.Key</th>
                         <th scope="col"> @row.Value</th>
                     </tr>
-                </thead>
-            </table>
-        }
+
+            }
+        </table>
+        <br /><br />
     }
     // TODO #2 - Loop over jobs dictionary and display all job fields 
 }
