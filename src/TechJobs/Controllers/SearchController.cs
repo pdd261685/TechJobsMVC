@@ -15,15 +15,26 @@ namespace TechJobs.Controllers
 
         public IActionResult Results(string searchType,string searchTerm)
         {
+           
             List<Dictionary<string, string>> jobs;
+
+            if (searchTerm==null)
+            {
+                searchTerm = " :no results found";
+                ViewBag.title = "Please enter a search term";
+            }
+            else
+            {
+                ViewBag.title = "Search in all: ";
+            }
             if (searchType.Equals("all")){
                 jobs = JobData.FindByValue(searchTerm);
-                ViewBag.title = "Search in all: " + searchTerm;
+                ViewBag.title += searchTerm;
             }
             else
             {
                 jobs = JobData.FindByColumnAndValue(searchType,searchTerm);
-                ViewBag.title = "Search in all:" + searchType + " " + searchTerm;
+                ViewBag.title += searchType + " " + searchTerm;
             }
 
             ViewBag.jobs = jobs;
