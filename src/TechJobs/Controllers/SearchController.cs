@@ -20,13 +20,12 @@ namespace TechJobs.Controllers
 
             if (searchTerm==null)
             {
-                searchTerm = " :no results found";
-                ViewBag.title = "Please enter a search term";
+                searchTerm = " ";
+                
             }
-            else
-            {
-                ViewBag.title = "Search in all: ";
-            }
+           
+            ViewBag.title = "Search in all: ";
+            
             if (searchType.Equals("all")){
                 jobs = JobData.FindByValue(searchTerm);
                 ViewBag.title += searchTerm;
